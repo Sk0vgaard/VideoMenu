@@ -83,12 +83,17 @@ namespace VideoMenu
             Console.WriteLine($"Genre name: ");
             video.Genre = Console.ReadLine();
             Console.WriteLine($"Year of video: ");
-            video.Year = Int32.Parse(Console.ReadLine());
+            video.Year = int.Parse(Console.ReadLine());
         }
 
         private static Video FindVideoById()
         {
-            Console.WriteLine("Insert video Id: ");
+            Console.WriteLine("\nId for each video:");
+            foreach (var video in videos)
+            {
+            Console.WriteLine($"Id:{video.Id} Title:{video.Title}");
+            }
+            Console.WriteLine("\nChoose the id of the video you wish to edit: ");
             int id;
             while (!int.TryParse(Console.ReadLine(), out id))
             {
@@ -148,7 +153,7 @@ namespace VideoMenu
 
         private static int ShowMenu(string[] menuItems)
         {
-            Console.WriteLine("Chose a option...\n");
+            Console.WriteLine("Choose a option...\n");
 
             for (int i = 0; i < menuItems.Length; i++)
             {
@@ -162,7 +167,7 @@ namespace VideoMenu
             {
                 Console.WriteLine("Please select a number between 1-6...");
             }
-            Console.WriteLine($"You have selected option: {selection}");
+            Console.WriteLine($"\nYou have selected option: {selection} ({menuItems[selection]})");
             return selection;
         }
     }
